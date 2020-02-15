@@ -123,7 +123,6 @@ const parseRestaurantR = data => {
     // 16 code postal
     // 22 tel
   });
-  console.log(info);
   return info;
 };
 
@@ -169,7 +168,7 @@ module.exports.get = async () => {
     }
     else
     {
-      console.log('New restaurant has been added in maitre restaurateur site, updating json file ...');
+      console.log('New restaurant has been added in maitre restaurateur site, updating json file, this may take several minute ...');
       rest = {
         restaurants : []
       };

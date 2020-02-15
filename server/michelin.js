@@ -79,6 +79,8 @@ const parse = data => {
   const experience = $('#experience-section > ul > li:nth-child(2)').text();
   let adresse = $('.section-main > div > ul.restaurant-details__heading--list > li:nth-child(1)').text();
   const price = $('.section-main .restaurant-details__heading-price').text();
+  let img = $('.masthead__gallery-image-item').attr('data-image');
+  console.log(img);
   if (adresse[0] == '\n')
   {
     adresse = $('.section-main > div > ul.restaurant-details__heading--list > li:nth-child(2)').text();
@@ -136,7 +138,7 @@ const parse = data => {
       feeling += experience[i];
     }
   }
-  return {name, adresse, feeling, priceRange, cooking};
+  return {name, adresse, feeling, priceRange, cooking, img};
 };
 
 scrapeRestaurant = async url => {

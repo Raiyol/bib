@@ -1,10 +1,10 @@
 /* eslint-disable no-console, no-process-exit */
 const michelin = require('./michelin');
-const maitre = require('./maitre');
+//const maitre = require('./maitre');
+const bib = require('./bib');
 
-maitre.get().then(function(result){
+michelin.get().then(function(result){
   console.log(result);
 });
 
 const [,, searchLink] = process.argv;
-console.log('wait dude');

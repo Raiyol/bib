@@ -10,4 +10,3 @@ maitre.get().then(function(result){
   console.log(result);
 });*/
 const [,, searchLink] = process.argv;
-console.log('wait dude');
