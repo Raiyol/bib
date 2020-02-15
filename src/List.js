@@ -26,11 +26,12 @@ class List extends Component {
                 {
                     this.state.restaurant.map( (restaurant)=> (
                         <li className="list-group-item" key={restaurant.id}>
-                            <img src={restaurant.img} className="float-left img-thumbnail rounded" width="300" height="200"/>
-                            <div className="float-left">
+                            <img src={restaurant.img} className="float-left img-thumbnail rounded" width="300" height="200" alt={restaurant.name}/>
+                            <div className="float-left pl-3">
                                 <h4>{restaurant.name} </h4>
-                                🗺 {restaurant.ville} {restaurant.cp} <br/>
+                                🗺 {restaurant.cp} {restaurant.ville}<br/>
                                 🍽 {restaurant.cooking} <br/>
+                                📞 {restaurant.tel} <br/>
                                 🌍 <a href={restaurant.bibURL}>Lien</a> 
                             </div>
                             
