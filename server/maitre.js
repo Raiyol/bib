@@ -2,6 +2,11 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const querystring = require('querystring');
 
+/**
+ * Parse webpage restaurant
+ * @param  {String} data - html response
+ * @return {Array} number of page and restaurant
+ */
 const parseNumberR = data => {
   const $ = cheerio.load(data);
   let page = $('a.end').attr('data-page');
@@ -16,6 +21,11 @@ const parseNumberR = data => {
   return [page, nombre];
 };
 
+/**
+ * Scrape a given restaurant url
+ * @param  {String}  url
+ * @return {Array} number of page and restaurant
+ */
 scrapeNumberR = async url => {
   const response = await axios.post(url, querystring.stringify({
     page : '1',
@@ -36,7 +46,7 @@ scrapeNumberR = async url => {
 /**
  * Parse webpage restaurant
  * @param  {String} data - html response
- * @return {Object} restaurant
+ * @return {Object} data about several restaurant
  */
 const parseRestaurantR = data => {
   const $ = cheerio.load(data);
@@ -129,7 +139,7 @@ const parseRestaurantR = data => {
 /**
  * Scrape a given restaurant url
  * @param  {String}  url
- * @return {Object} restaurant
+ * @return {Object} data about several restaurant
  */
 scrapeRestaurantR = async (url,num) => {
   const response = await axios({
@@ -150,6 +160,10 @@ scrapeRestaurantR = async (url,num) => {
   return null;
 };
 
+/**
+ * Get all France located Maitre restaurateur
+ * @return {Array} restaurants
+ */
 module.exports.get = async () => {
   try {
     const searchLink = 'https://www.maitresrestaurateurs.fr/annuaire/ajax/loadresult';

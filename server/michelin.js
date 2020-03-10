@@ -2,9 +2,9 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 
 /**
- * Parse webpage restaurant
+ * Parse webpage restaurant for links
  * @param  {String} data - html response
- * @return {Object} restaurant
+ * @return {Object} Links
  */
 const parseLink = data => {
   const $ = cheerio.load(data);
@@ -21,7 +21,7 @@ const parseLink = data => {
 /**
  * Scrape a given restaurant url
  * @param  {String}  url
- * @return {Object} restaurant
+ * @return {Object} Links
  */
 scrapeLink = async url => {
   const response = await axios.get(url);
@@ -36,7 +36,11 @@ scrapeLink = async url => {
   return null;
 };
 
-
+/**
+ * Parse webpage restaurant for number of restaurant
+ * @param  {String} data - html response
+ * @return {Array} number of page and number of restaurant
+ */
 const parseNumber = data => {
   const $ = cheerio.load(data);
   let number = '';
@@ -59,6 +63,11 @@ const parseNumber = data => {
   }
 };
 
+/**
+ * Scrape a given restaurant url
+ * @param  {String}  url
+ * @return {Array} number of page and number of restaurant
+ */
 scrapeNumber = async url => {
   const response = await axios.get(url);
   const {data, status} = response;
@@ -73,6 +82,11 @@ scrapeNumber = async url => {
 };
 
 
+/**
+ * Parse webpage restaurant
+ * @param  {String} data - html response
+ * @return {Object} Data of a restaurant
+ */
 const parse = data => {
   const $ = cheerio.load(data);
   const name = $('.section-main h2.restaurant-details__heading--title').text();
@@ -80,7 +94,6 @@ const parse = data => {
   let adresse = $('.section-main > div > ul.restaurant-details__heading--list > li:nth-child(1)').text();
   const price = $('.section-main .restaurant-details__heading-price').text();
   let img = $('.masthead__gallery-image-item').attr('data-image');
-  console.log(img);
   if (adresse[0] == '\n')
   {
     adresse = $('.section-main > div > ul.restaurant-details__heading--list > li:nth-child(2)').text();
@@ -141,6 +154,11 @@ const parse = data => {
   return {name, adresse, feeling, priceRange, cooking, img};
 };
 
+/**
+ * Scrape a given restaurant url
+ * @param  {String}  url
+ * @return {Object} Data of a restaurant
+ */
 scrapeRestaurant = async url => {
   const response = await axios.get(url);
   const {data, status} = response;

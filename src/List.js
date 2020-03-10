@@ -32,7 +32,8 @@ class List extends Component {
                                 🗺 {restaurant.cp} {restaurant.ville}<br/>
                                 🍽 {restaurant.cooking} <br/>
                                 📞 {restaurant.tel} <br/>
-                                🌍 <a href={restaurant.bibURL}>Lien</a> 
+                                👨 {restaurant.owner} <br/>
+                                🌍 <a href={restaurant.bibURL}>Lien</a>
                             </div>
                             
                         </li>
