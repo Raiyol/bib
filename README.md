@@ -1,5 +1,3 @@
-# BIB
-
 # Execute 
 
 1. Start server. 
@@ -17,6 +15,8 @@ On new shell :
 ```sh
 ❯ npm start
 ```
+
+# BIB
 
 > Maître Restaurateur x Bib Gourmand
 
