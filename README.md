@@ -1,5 +1,22 @@
 # BIB
 
+# Execute 
+
+1. Start server 
+On new shell : 
+```sh
+❯ cd /server
+❯ node server.js
+```
+Wait if new restaurant has been added on michelin or maitre raistaurateur
+Result can be check on http://localhost:5000/bib
+
+2. Start react
+On new shell
+```sh
+❯ npm start
+```
+
 > Maître Restaurateur x Bib Gourmand
 
 ![bib](./img/bib.jpg)
