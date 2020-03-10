@@ -4,7 +4,8 @@ class List extends Component {
     constructor(props){
         super(props)
         this.state = {
-            restaurant : []
+            restaurant : [],
+            search : ""
         }
     }
     componentDidMount() {
@@ -19,27 +20,40 @@ class List extends Component {
         
         return body;
     };
+    renderRestaurant = rest => {
+        return(
+            <div className="col-md-3">
+                <img src={rest.img} className="float-left img-thumbnail rounded" width="300" height="200" alt={rest.name}/>
+                <p>
+                    <h4>{rest.name} </h4>
+                    🗺 {rest.cp} {rest.ville}<br/>
+                    🍽 {rest.cooking} <br/>
+                    📞 {rest.tel} <br/>
+                    👨 {rest.owner} <br/>
+                </p>
+            </div>
+        )
+    }
+    onchange = e => {
+        this.setState({ search: e.target.value });
+    };
     render() {
+        const { search } = this.state;
+        const filteredRest = this.state.restaurant.filter(rest => {
+            return rest.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+          });
       return (
         <div className="bibList">
-            <ul className="list-group list-group-flush">
-                {
-                    this.state.restaurant.map( (restaurant)=> (
-                        <li className="list-group-item" key={restaurant.id}>
-                            <img src={restaurant.img} className="float-left img-thumbnail rounded" width="300" height="200" alt={restaurant.name}/>
-                            <div className="float-left pl-3">
-                                <h4>{restaurant.name} </h4>
-                                🗺 {restaurant.cp} {restaurant.ville}<br/>
-                                🍽 {restaurant.cooking} <br/>
-                                📞 {restaurant.tel} <br/>
-                                👨 {restaurant.owner} <br/>
-                                🌍 <a href={restaurant.bibURL}>Lien</a>
-                            </div>
-                            
-                        </li>
-                    ))
-                }
-            </ul>
+            <div>
+                <div className="form-group">
+                    <input type="text" class="form-control" placeholder="Search Restaurant" name="text1" onChange={this.onchange} icon="search" />
+                </div>
+            </div>
+            <div className="row">
+                {filteredRest.map(rest => {
+                return this.renderRestaurant(rest);
+                })}
+            </div>
         </div>
       )
     }
