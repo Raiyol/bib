@@ -23,7 +23,7 @@ class List extends Component {
     renderRestaurant = rest => {
         return(
             <div className="col-md-3">
-                <img src={rest.img} className="float-left img-thumbnail rounded" width="300" height="200" alt={rest.name}/>
+                <img src={rest.img} className="img-thumbnail rounded" width="300" height="200" alt={rest.name}/>
                 <p>
                     <h4>{rest.name} </h4>
                     🗺 {rest.cp} {rest.ville}<br/>
