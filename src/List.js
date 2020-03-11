@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import "./List.css";
+
 class List extends Component {
     constructor(props){
         super(props)
@@ -23,9 +25,9 @@ class List extends Component {
     renderRestaurant = rest => {
         return(
             <div className="col-md-3">
-                <img src={rest.img} className="img-thumbnail rounded" width="300" height="200" alt={rest.name}/>
+                <img src={rest.img} className="rounded" alt={rest.name}/>
+                <h4>{rest.name} </h4>
                 <p>
-                    <h4>{rest.name} </h4>
                     🗺 {rest.cp} {rest.ville}<br/>
                     🍽 {rest.cooking} <br/>
                     📞 {rest.tel} <br/>
@@ -46,7 +48,7 @@ class List extends Component {
         <div className="bibList">
             <div>
                 <div className="form-group">
-                    <input type="text" class="form-control" placeholder="Search Restaurant" name="text1" onChange={this.onchange} icon="search" />
+                    <input type="text" className="form-control" placeholder="Search Restaurant" name="text1" onChange={this.onchange} icon="search" />
                 </div>
             </div>
             <div className="row">
